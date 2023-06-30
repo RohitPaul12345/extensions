@@ -1,9 +1,9 @@
-var webpack = require("webpack");
-var path = require("path");
-var cssnext = require('postcss-cssnext');
-var stylus = require('stylus');
+let webpack = require("webpack");
+let path = require("path");
+let cssnext = require('postcss-cssnext');
+let stylus = require('stylus');
 
-var config = {
+let config = {
 	cache: true,
 	context: path.join(__dirname, '/../src'),
 	entry: {
@@ -52,15 +52,15 @@ module.exports = function(options, plugins, loaders) {
 	config.plugins = plugins;
 
 	//Loaders
-	var _loaders = [];
-	for(var i in loaders)
+	let _loaders = [];
+	for(let i in loaders)
 		_loaders.push(loaders[i]);
 
 	config.module = {
 		loaders: _loaders
 	}
 
-	var finalObj = Object.assign(config, options);
+	let finalObj = Object.assign(config, options);
 
 	return finalObj;
 }
