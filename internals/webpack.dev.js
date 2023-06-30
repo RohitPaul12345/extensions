@@ -1,14 +1,14 @@
 global.withAppBuild = true
 
-var commonConfig = require('./webpack.common.js')
-var webpack = require("webpack");
-var path = require("path");
-var WriteFilePlugin = require('write-file-webpack-plugin');
+let commonConfig = require('./webpack.common.js')
+let webpack = require("webpack");
+let path = require("path");
+let WriteFilePlugin = require('write-file-webpack-plugin');
 
 process.env.NODE_ENV = "development"
 
 //Plugins
-var plugins = commonConfig.plugins.concat([
+let plugins = commonConfig.plugins.concat([
 	new webpack.DefinePlugin({
 		__DEV__: JSON.stringify(true),
 		__PLATFORM__: JSON.stringify(global.platform||"chrome"),
@@ -18,10 +18,10 @@ var plugins = commonConfig.plugins.concat([
 	new WriteFilePlugin(),
 ])
 
-var loaders = commonConfig.loaders;
+let loaders = commonConfig.loaders;
 
-var isHttps = global.unsecure ? false : true;
-var protocol = (isHttps ? "https" : "http"),
+let isHttps = global.unsecure ? false : true;
+let protocol = (isHttps ? "https" : "http"),
 	port = (isHttps ? 443 : 80);
 
 module.exports = require('./webpack.js')({
