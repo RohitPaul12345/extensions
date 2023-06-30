@@ -1,26 +1,26 @@
-var webextension={};
+let webextension={};
 if (typeof msBrowser != "undefined") webextension = msBrowser;
 else if (typeof browser != "undefined") webextension = browser;
 else if (typeof chrome != "undefined") webextension = chrome;
 
-var getCurrentTab = function(callback) {
+let getCurrentTab = function(callback) {
 	webextension.tabs.query({active: true, currentWindow: true}, (tabs=[])=>{
 		callback(tabs[0])
 	})
 }
 
-var sendMessageToIframe = function(m) {
+let sendMessageToIframe = function(m) {
 	if (document.getElementById("iframe"))
 		document.getElementById("iframe").contentWindow.postMessage(m,'*');
 }
 
-var sendMessageToBackground = function(data, callback) {
+let sendMessageToBackground = function(data, callback) {
 	if (typeof webextension.runtime != "undefined"){
 		webextension.runtime.sendMessage(data, callback)
 	}
 }
 
-var sendMessageToPage = function(data, callback) {
+let sendMessageToPage = function(data, callback) {
 	getCurrentTab((tab)=>{
 		if (!tab) return callback(null)
 
@@ -31,7 +31,7 @@ var sendMessageToPage = function(data, callback) {
 	})
 }
 
-var onMessage = function(e) {
+let onMessage = function(e) {
 	//if (e.origin!="https://raindrop.io")
 	//	return;
 
