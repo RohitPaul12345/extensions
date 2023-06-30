@@ -1,5 +1,5 @@
-var id = 'UA-45127971-1';
-var enabled = true;
+let id = 'UA-45127971-1';
+let enabled = true;
 
 //Disable for Firefox extension
 if ('MozAppearance' in document.documentElement.style)
@@ -8,7 +8,7 @@ if ('MozAppearance' in document.documentElement.style)
 if (enabled) {
     //inject script
     (function(d, s, tagId){
-        var js, fjs = d.getElementsByTagName(s)[0];
+        let js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(tagId)){ return; }
         js = d.createElement(s);
         js.id = tagId;
@@ -25,10 +25,10 @@ if (enabled) {
     function pageview() {
         try {
             // Retrieve all trackers
-            var trackers = ga.getAll();
+            let trackers = ga.getAll();
             trackers.forEach(function(tracker) {
                 // Get the Client ID
-                var cid = tracker.get('clientId');
+                let cid = tracker.get('clientId');
                 // Set the Check Protocol Task to null
                 tracker.set('checkProtocolTask', null);
             });
